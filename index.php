@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="sweetalert.min.js"></script>
+    <script src="/js/jquery-1.11.0.min.js"></script>
+    <script src="/lib/sweetalert.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
 
@@ -90,88 +90,24 @@
 <div class="logo">
     <h4><a href="index.php">Умный <strong>ЗВОНОК</strong></a></h4>
 </div>
-<!--<nav id="sidebar" class="sidebar nav-collapse collapse">
-    <ul id="side-nav" class="side-nav">
-        <li class="active">
-            <a href="index.php#"><i class="fa fa-home"></i> <span class="name">Главная</span></a>
-        </li>
-        
-        <li class="panel">
-            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#side-nav" href="index.php#stats-collapse"><i class="fa fa-asterisk"></i> <span class="name">Освещение</span></a>
-            <ul id="stats-collapse" class="panel-collapse collapse">
-                <li><a href="indoor.php#">Внутри</a></li>
-                <li><a href="outdoor.php#">Снаружи</a></li>
-            </ul>
-        </li>
-		<li class="panel">
-            <a href="klimat.php#"><i class="fa fa-magic"></i> <span class="name">Климат</span></a>
-        </li>
-        <li class="panel">
-            <a href="oxr.php#"><i class="fa fa-table"></i> <span class="name">Охрана</span></a>
-        </li>
-        <li class="panel">
-            <a href="statistic.php#"><i class="fa fa-bars"></i> <span class="name">Статистика</span></a>
-        </li>
-       
-    </ul>
-    <div id="sidebar-settings" class="settings">
-        <button type="button"
-                data-value="icons"
-                class="btn-icons btn btn-transparent btn-sm">Свернуть</button>
-        <button type="button"
-                data-value="auto"
-                class="btn-auto btn btn-transparent btn-sm">Авто</button>
-    </div>
-</nav>
-<div class="wrap">
-    <header class="page-header">
-        <div class="navbar">
-                <ul class="nav navbar-nav navbar-right pull-right">
-                    
-                    
-                    <li class="visible-xs">
-                        <a href="#"
-                           class="btn-navbar"
-                           data-toggle="collapse"
-                           data-target=".sidebar"
-                           title="">
-                            <i class="fa fa-bars"></i>
-                        </a>
-                    </li>
-                  
-                    <li class="hidden-xs">
-                        <a href="#" id="settings"
-                           title="Settings"
-                           data-toggle="popover"
-                           data-placement="bottom">
-                            <i class="fa fa-cog"></i>
-                        </a>
-                    </li>
-                   
-                    
-                   
-                </ul>
-
-
-        </div>
-    </header> 
--->
 
   <div class="content container">
         <div class="row">
             <div class="col-md-12">
             <div class="content container">
         <div class="row">
-            <div class="col-md-12 text-align-center row margin-bottom">
+            <div class="text-align-center ">
 
-                <h2 class="page-title">Управление автоматической системой звонков</h2>
-    </div>
+                <h2>Управление автоматической системой звонков</h2>
+
+                <div id="real_time" class = "text-align-right">
+
+
     </div>
     </div>
 <!--Интеграция колледжа-->
 
-<!--
-                <h2 class="page-title">Звонок Колледж</h2>  -->
+
             </div>
         </div>
         <div class="row">
@@ -228,12 +164,17 @@
                                     </button>
                                     </div>
                                     </div>
+
                                 </div>
+
                             </div>
 
-
+                        <div id="history">
                 </section>
+
+
     </div>
+
     <div class="col-md-6">
                 <section class="widget">
                     <header>
@@ -245,6 +186,7 @@
                     </header>
                     <div class="body">
                         <div id="content">
+
         <script>
                 function show()
                 {
@@ -256,31 +198,44 @@
                                 }
                         });
                 }
+                function realT()
+                {
+                    $.ajax({
+                        url: "real_time.php",
+                        cache: false,
+                        success: function(html){
+                            $("#real_time").html(html);
+                        }
+                    });
+                }
+                function hist()
+                {
+                    $.ajax({
+                        url: "history.txt",
+                        cache: false,
+                        success: function(html){
+                            $("#history").html(html);
+                        }
+                    });
+                }
 
                 $(document).ready(function(){
                         show();
                         setInterval('show()',1000);
+                        realT();
+                        setInterval('realT()',1000);
+                        hist();
+                        setInterval('hist()',1000);
                 });
-
-
-
-
-
 
         </script>
 
             </div>
+
     </div>
+
     </div>
 
-
-<!--Конец интеграции колледжа-->
-
-
-
-
-
-  
                 
     <div class="loader-wrap hiding hide">
         <i class="fa fa-spinner fa-spin"></i>
