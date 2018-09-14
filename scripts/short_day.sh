@@ -41,4 +41,6 @@ echo 'echo "<br>";'
 echo 'echo "В <b>17:00 </b>будет произведен перевод на полный день";'
 echo 'echo "</h2>";'
 echo '?>'
-} > ../active_rasp.php
+} > ../active_rasp_col.php
+
+echo -n > ../active_rasp.php

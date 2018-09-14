@@ -4,13 +4,19 @@ $minute=date("i");
 echo((date( "H")-1) . ":" . date( "i:s"));
 echo "<br>";
 echo "<hr>";
-                if ($hours <= 8){
-                        echo "0";
+                if ($hours <= 8 or $hours >=17){
+                        echo "8:30 утром";
                 }
-                if ($hours == 8){
-                    if($minute >=30);
+                if ($hours <= 8){
+                        echo "8:30 1";
+                    if($minute <=30);
                     {
-                        echo "След 09:15";
+                        echo "8:30";
+                    }
+                }
+                if ($hours >= 8 and $hours <=9){
+                    if($minute >=30){
+                        echo "9:15";
                     }
                 }
                 if ($hours == 9){

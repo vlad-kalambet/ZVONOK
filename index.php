@@ -185,7 +185,8 @@
                         </h4>
                     </header>
                     <div class="body">
-                        <div id="content">
+                        <div id="col_content">
+
 
         <script>
                 function show()
@@ -197,6 +198,16 @@
                                         $("#content").html(html);
                                 }
                         });
+                }
+                function show_col()
+                {
+                    $.ajax({
+                        url: "active_rasp_col.php",
+                        cache: false,
+                        success: function(html){
+                            $("#col_content").html(html);
+                        }
+                    });
                 }
                 function realT()
                 {
@@ -222,6 +233,8 @@
                 $(document).ready(function(){
                         show();
                         setInterval('show()',1000);
+                        show_col();
+                        setInterval('show_col()',1000);
                         realT();
                         setInterval('realT()',1000);
                         hist();
@@ -231,7 +244,7 @@
         </script>
 
             </div>
-
+                        <div id="content">
     </div>
 
     </div>
